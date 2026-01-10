@@ -1,4 +1,4 @@
-package week1Prep;
+package Week1Prep;
 
 public class day1MethodOperator {
 }

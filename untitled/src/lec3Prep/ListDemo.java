@@ -1,8 +1,8 @@
 package lec3Prep;
 
-import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class ListDemo {
     public static void main(String[] args) {
@@ -10,9 +10,9 @@ public class ListDemo {
         L.add("a");
         L.add("b");
         L.add("c");
-        System.out.println(L);
+//        L.add(3);
 
+        System.out.println(L);
         String x = L.get(0);
-//        L.add(3); //Syntax error. Won’t compile.
     }
 }

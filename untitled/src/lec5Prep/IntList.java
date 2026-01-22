@@ -1,4 +1,4 @@
-package lec4Prep;
+package lec5Prep;
 
 public class IntList {
     public int first;

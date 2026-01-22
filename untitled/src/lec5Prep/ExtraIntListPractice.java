@@ -1,4 +1,4 @@
-package lec4Prep;
+package lec5Prep;
 
 public class ExtraIntListPractice {
     /** Returns an IntList identical to L, but with
@@ -44,8 +44,8 @@ public class ExtraIntListPractice {
         // Test your answers by uncommenting. Or copy and paste the
         // code for incrList and dincrList into IntList.java and
         // run it in the visualizer.
-         System.out.println(L.get(1));
-         System.out.println(incrList(L, 3));
-         System.out.println(dincrList(L, 3));
+        System.out.println(L.get(1));
+        System.out.println(incrList(L, 3));
+        System.out.println(dincrList(L, 3));
     }
 }

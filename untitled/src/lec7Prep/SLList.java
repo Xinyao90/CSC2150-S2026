@@ -4,9 +4,9 @@ import lec5Prep.IntList;
 
 public class SLList {
     private static class IntNode{
-        public int item;
-        public IntNode next;
-        public IntNode(int i, IntNode n) {
+        private int item;
+        private IntNode next;
+        private IntNode(int i, IntNode n) {
             item = i;
             next = n;
         }
@@ -50,15 +50,8 @@ public class SLList {
         p.next = new IntNode(x, null);
     }
 
-    private int size(IntNode p) {
-        if(p.next == null) {
-            return 0;
-        }
-        return 1 + size(p.next);
-    }
-
     public int size() {
-        return size(sentinel);
+        return size;
     }
 
     public static void main(String[] args) {

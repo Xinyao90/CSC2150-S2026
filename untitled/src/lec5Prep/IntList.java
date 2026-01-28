@@ -60,5 +60,9 @@ public class IntList {
         L = new IntList(5, L);
 
         System.out.println(L.get(1));
+
+        int x = L.first;
+        System.out.println(x);
+
     }
 }

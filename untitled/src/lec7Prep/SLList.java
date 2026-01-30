@@ -58,5 +58,6 @@ public class SLList {
         SLList L = new SLList();
         L.addLast(20);
         System.out.println(L.size());
+
     }
 }

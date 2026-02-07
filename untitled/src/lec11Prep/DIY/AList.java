@@ -4,6 +4,8 @@ package lec11Prep.DIY;
  *  in case you want to try to figure out how to write it yourself.
  *  After writing your methods, you can run the AListTest file.
  */
+
+//[ 2 , 3, 6] .getLast(); return 6;
 public class AList {
     /** Creates an empty list. */
     public AList() {
@@ -15,7 +17,7 @@ public class AList {
 
     /** Returns the item from the back of the list. */
     public int getLast() {
-        return 0;
+        return items[size - 1];
     }
     /** Gets the ith item in the list (0 is the front). */
     public int get(int i) {

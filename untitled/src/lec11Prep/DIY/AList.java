@@ -17,7 +17,7 @@ public class AList {
 
     /** Returns the item from the back of the list. */
     public int getLast() {
-        return items[size - 1];
+        return 0;
     }
     /** Gets the ith item in the list (0 is the front). */
     public int get(int i) {

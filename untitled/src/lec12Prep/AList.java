@@ -16,13 +16,13 @@ public class AList {
      * addLast using resize-by-1.
      * naive resizing
      */
-    public void addLast(int x) {
-        if (size == items.length) {
-            resize(size + 1);
-        }
-        items[size] = x;
-        size += 1;
-    }
+//    public void addLast(int x) {
+//        if (size == items.length) {
+//            resize(size + 1);
+//        }
+//        items[size] = x;
+//        size += 1;
+//    }
 
     /**
      * Upgrade to geometric resizing

@@ -1,6 +1,7 @@
 package lec15Prep;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ArraySet<T> implements Iterable<T>{
     private T[] items;
@@ -14,6 +15,10 @@ public class ArraySet<T> implements Iterable<T>{
     /* Returns true if this map contains a mapping for the specified key.
      */
     public boolean contains(T x) {
+        // Policy: null is never "contained"
+        if (x == null) {
+            return false;
+        }
         for (int i = 0; i < size; i++) {
             if (items[i].equals(x)) {
                 return true;
@@ -31,10 +36,8 @@ public class ArraySet<T> implements Iterable<T>{
         if (contains(x)) {
             return;
         }
-        if (!contains(x)){
-            items[size] = x;
-            size += 1;
-        }
+        items[size] = x;
+        size += 1;
     }
 
     /* Returns the number of key-value mappings in this map. */
@@ -58,6 +61,9 @@ public class ArraySet<T> implements Iterable<T>{
         }
 
         public T next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
             T returnItem = items[wizPos];
             wizPos += 1;
             return returnItem;

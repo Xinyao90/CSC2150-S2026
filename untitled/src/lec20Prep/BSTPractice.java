@@ -83,7 +83,16 @@ public class BSTPractice {
         }
         return root;
     }
-    
+
+    static void inorder(BSTNode root) {
+        if (root == null) {
+            return;
+        }
+        inorder(root.left);
+        System.out.println(root.key + " ");
+        inorder(root.right);
+    }
+
     public static void main(String[] args){
 
         BSTNode root = null;
@@ -111,13 +120,11 @@ public class BSTPractice {
         // test findMin
         System.out.println("\nMinimum value: " + findMin(root));
 
-
         // test delete
         root = delete(root,8);
         System.out.println("\nAfter deleting 8:");
         root = delete(root,10);
         System.out.println("\nAfter deleting 10:");
-
 
         inorder(root);
     }

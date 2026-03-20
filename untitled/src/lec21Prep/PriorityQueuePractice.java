@@ -7,49 +7,35 @@ public class PriorityQueuePractice {
      * Heap is stored in a 0-based array.
      */
     public static class IntMinPQ {
-        private int[] items;
-        private int size;
 
         public IntMinPQ() {
-            items = new int[16];
-            size = 0;
         }
 
-        /** Returns number of items currently in the PQ. */
         public int size() {
-            return size;
+            return 0;
         }
 
-        /** Returns true if PQ is empty. */
         public boolean isEmpty() {
-            return size == 0;
+            return false;
         }
 
-        /** Returns the smallest item without removing it. */
         public int getSmallest() {
             if (size == 0) {
                 throw new IllegalStateException("PQ is empty.");
             }
-            return items[0];
+            return 0;
         }
 
-        /** Adds x into the priority queue. */
         public void add(int x) {
             if (size == items.length) {
                 resize(items.length * 2);
             }
 
-            // Step 1: place new item at the end
-            items[size] = x;
-
-            // Step 2: restore heap property
-            swim(size);
-
-            // Step 3: increase size
-            size++;
+            // TODO: place new item at the end
+            // TODO: call swim on the correct index
+            // TODO: increase size
         }
 
-        /** Removes and returns the smallest item. */
         public int removeSmallest() {
             if (size == 0) {
                 throw new IllegalStateException("PQ is empty.");
@@ -57,74 +43,51 @@ public class PriorityQueuePractice {
 
             int smallest = items[0];
 
-            // Move last item to root
-            items[0] = items[size - 1];
-            size--;
-
-            // Restore heap property if not empty
-            if (size > 0) {
-                sink(0);
-            }
+            // TODO: move last item to root
+            // TODO: decrease size
+            // TODO: if needed, sink from root
 
             return smallest;
         }
 
-        /** Moves item at index k upward until heap property is restored. */
         private void swim(int k) {
-            while (k > 0 && items[k] < items[parent(k)]) {
-                swap(k, parent(k));
-                k = parent(k);
-            }
+            // TODO:
+            // while k > 0 and items[k] < items[parent(k)]
+            // swap and move upward
         }
 
-        /** Moves item at index k downward until heap property is restored. */
         private void sink(int k) {
-            while (leftChild(k) < size) {
-                int smaller = leftChild(k);
-
-                if (rightChild(k) < size && items[rightChild(k)] < items[leftChild(k)]) {
-                    smaller = rightChild(k);
-                }
-
-                if (items[k] <= items[smaller]) {
-                    break;
-                }
-
-                swap(k, smaller);
-                k = smaller;
-            }
+            // TODO:
+            // while left child exists
+            // choose smaller child
+            // if heap property already holds, stop
+            // otherwise swap and continue downward
         }
 
-        /** Returns parent index of k. */
         private int parent(int k) {
             return (k - 1) / 2;
         }
 
-        /** Returns left child index of k. */
         private int leftChild(int k) {
             return 2 * k + 1;
         }
 
-        /** Returns right child index of k. */
         private int rightChild(int k) {
             return 2 * k + 2;
         }
 
-        /** Swaps items at indices i and j. */
         private void swap(int i, int j) {
             int temp = items[i];
             items[i] = items[j];
             items[j] = temp;
         }
 
-        /** Resizes the underlying array. */
         private void resize(int capacity) {
             int[] a = new int[capacity];
             System.arraycopy(items, 0, a, 0, size);
             items = a;
         }
 
-        /** Prints heap array contents in logical order. */
         public void printHeapArray() {
             System.out.print("[ ");
             for (int i = 0; i < size; i++) {

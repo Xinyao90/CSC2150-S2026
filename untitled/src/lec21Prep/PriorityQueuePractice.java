@@ -11,7 +11,7 @@ public class PriorityQueuePractice {
         private int size;
 
         public IntMinPQ() {
-            items = new int[16]; // what is the items looks like? [0, 0, 0 ,0 ...0] 16 of 0s.
+            items = new int[16]; // what does the items look like? [0, 0, 0 ,0 ...0] 16 of 0s.
             size = 0;
         }
 

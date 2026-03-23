@@ -7,23 +7,42 @@ public class PriorityQueuePractice {
      * Heap is stored in a 0-based array.
      */
     public static class IntMinPQ {
+        private int[] items;
+        private int size;
 
         public IntMinPQ() {
+            items = new int[16]; // what is the items looks like? [0, 0, 0 ,0 ...0] 16 of 0s.
+            size = 0;
+        }
+
+        /**
+         * Creates a PQ from an existing array.
+         * TODO: copy data and call heapify()
+         */
+        public IntMinPQ(int[] data) {
+            items = new int[Math.max(16, data.length)];
+            size = data.length;
+
+            // TODO: copy data into items
+            System.arraycopy(data, 0, items, 0, data.length);
+
+            // TODO: call heapify()
+            heapify();
         }
 
         public int size() {
-            return 0;
+            return size;
         }
 
         public boolean isEmpty() {
-            return false;
+            return size == 0;
         }
 
         public int getSmallest() {
             if (size == 0) {
                 throw new IllegalStateException("PQ is empty.");
             }
-            return 0;
+            return items[0];
         }
 
         public void add(int x) {
@@ -34,6 +53,9 @@ public class PriorityQueuePractice {
             // TODO: place new item at the end
             // TODO: call swim on the correct index
             // TODO: increase size
+            items[size] = x;
+            swim(size);
+            size++;
         }
 
         public int removeSmallest() {
@@ -44,16 +66,36 @@ public class PriorityQueuePractice {
             int smallest = items[0];
 
             // TODO: move last item to root
+            items[size - 1] = smallest;
             // TODO: decrease size
+            size--;
             // TODO: if needed, sink from root
+            sink(0);
 
             return smallest;
+        }
+
+        /**
+         * Bottom-up heap construction
+         * Only non-leaf nodes need sink()
+         */
+        public void heapify() {
+            // TODO:
+            // for i from size/2 - 1 down to 0:
+            //     sink(i)
+            for (int i = size/2 - 1; i >= 0; i--) {
+                sink(i);
+            }
         }
 
         private void swim(int k) {
             // TODO:
             // while k > 0 and items[k] < items[parent(k)]
             // swap and move upward
+            while(k > 0 && items[k] < items[parent(k)]) {
+                swap(k, parent(k));
+                k = parent(k);
+            }
         }
 
         private void sink(int k) {
@@ -62,6 +104,17 @@ public class PriorityQueuePractice {
             // choose smaller child
             // if heap property already holds, stop
             // otherwise swap and continue downward
+            while(leftChild(k) < size) {
+                int smallerChild = leftChild(k);
+                if(rightChild(k) < size && items[rightChild(k)] < items[leftChild(k)]) {
+                    smallerChild = rightChild(k);
+                }
+                if (items[k] <= items[smallerChild]) {
+                    break;
+                }
+                swap(k, smallerChild);
+                k = smallerChild;
+            }
         }
 
         private int parent(int k) {
@@ -139,5 +192,13 @@ public class PriorityQueuePractice {
         System.out.println("Heap storing the 3 largest values:");
         top3.printHeapArray();
         System.out.println("Current cutoff (smallest among top 3): " + top3.getSmallest());
+
+//        System.out.println("=== Heapify Demo ===");
+//        int[] data = {7, 3, 10, 1, 5};
+//
+//        IntMinPQ pq = new IntMinPQ(data);
+//
+//        System.out.println("After heapify:");
+//        pq.printHeapArray();
     }
 }

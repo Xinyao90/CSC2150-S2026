@@ -4,21 +4,22 @@ import java.util.PriorityQueue;
 
 public class findKthLargestSolution {
     public static int findKthLargest(int[] nums, int k) {
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        //TODO
+        PriorityQueue<Integer> minheap = new PriorityQueue<>();
         for (int num : nums) {
-            if (minHeap.size() < k) {
-                minHeap.offer(num);
+            if (minheap.size() < k){
+                minheap.offer(num);
             } else {
-                if(minHeap.peek() < num) {
-                    minHeap.offer(num);
-                    minHeap.poll();// remove smallest
+                if(minheap.peek() < num) {
+                    minheap.offer(num);
+                    minheap.poll();
                 }
             }
-//            if (minHeap.size() > k) {
-//                minHeap.poll(); // remove smallest
+//            if (minheap.size() > k) {
+//                minheap.poll();
 //            }
         }
-        return minHeap.peek(); // kth largest
+        return minheap.peek();
     }
 
     public static void main(String[] args) {

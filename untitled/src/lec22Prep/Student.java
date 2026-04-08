@@ -15,15 +15,17 @@ public class Student {
     //compares name and id
     @Override
     public boolean equals(Object other) {
+        //TODO
         if (this == other) return true;
         if (!(other instanceof Student)) return false;
         Student s = (Student) other;
-        return id == s.id && Objects.equals(name, s.name);
+        return this.id == s.id && Objects.equals(name, s.name);
     }
     //compares name and id
     @Override
     public int hashCode() {
         return Objects.hash(id, name);
+//        return Objects.hash(id);
     }
 
 //    // Only compare id
@@ -50,5 +52,11 @@ public class Student {
 
         set.add(s1);
         System.out.println(set.contains(s2)); // true only if equals/hashCode are consistent
+
+        String a = null;
+        String b = null;
+
+        System.out.println(Objects.equals(a, b)); // ?
+        System.out.println(a.equals(b));
     }
 }

@@ -38,7 +38,7 @@ public class Student {
 //        return this.id == s.id;
 //    }
 //
-//    // MUST match equals → only use id
+    // MUST match equals → only use id
 //    @Override
 //    public int hashCode() {
 //        return Objects.hash(id);

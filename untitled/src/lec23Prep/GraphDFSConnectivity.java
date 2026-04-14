@@ -1,6 +1,8 @@
 package lec23Prep;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class GraphDFSConnectivity {
     public static class Graph {
@@ -43,6 +45,7 @@ public class GraphDFSConnectivity {
         //         if recursive call returns true, return true
 
         // TODO: if no path found, return false
+
         return false;
     }
 
@@ -54,12 +57,13 @@ public class GraphDFSConnectivity {
         g.addEdge(1, 2);
         g.addEdge(1, 4);
         g.addEdge(2, 5);
-        g.addEdge(5, 4);
+        g.addEdge(4, 5);
         g.addEdge(3, 6);
         g.addEdge(6, 7);
         g.addEdge(6, 8);
 
         System.out.println(pathExists(g, 0, 8)); // true
-        System.out.println(pathExists(g, 2, 8)); // false if disconnected in your chosen graph
+        System.out.println(pathExists(g, 2, 7)); // true
+        System.out.println(pathExists(g, 1, 5)); // true
     }
 }

@@ -1,10 +1,12 @@
-package lec23Prep;
+package lec24Prep;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
-public class GraphDFSPaths {
+public class BFSPathPractice {
     public static class Graph {
         private ArrayList<Integer>[] adj;
 
@@ -30,25 +32,28 @@ public class GraphDFSPaths {
         }
     }
 
-    public static void dfsPaths(Graph g, int s, boolean[] visited, int[] edgeTo) {
-        visited[s] = true;
+    public static void bfsPaths(Graph g, int s, boolean[] visited, int[] edgeTo) {
+        Queue<Integer> q = new LinkedList<>();
 
-        for (int neighbor : g.neighbors(s)) {
-            if (!visited[neighbor]) {
-                // TODO: record how we reached neighbor
-                // TODO: recursively dfs from neighbor
-            }
-        }
+        // TODO:
+        // 1. mark s visited
+        // 2. enqueue s
+        // 3. BFS
+        // 4. when discovering neighbor:
+        //      mark visited
+        //      edgeTo[neighbor] = v
+        //      enqueue neighbor
     }
 
     public static List<Integer> buildPath(int s, int t, boolean[] visited, int[] edgeTo) {
         List<Integer> path = new ArrayList<>();
 
-        // TODO: if t is not visited, return empty path
+        // TODO:
+        // if t is not visited, return empty path
+        // trace backward from t to s using edgeTo
+        // add s
+        // reverse and return
 
-        // TODO: walk backward from t to s using edgeTo
-        // TODO: add s
-        // TODO: reverse list before returning
         return path;
     }
 
@@ -56,14 +61,13 @@ public class GraphDFSPaths {
         Graph g = new Graph(9);
 
         g.addEdge(0, 1);
-        g.addEdge(0, 3);
         g.addEdge(1, 2);
         g.addEdge(1, 4);
         g.addEdge(2, 5);
-        g.addEdge(5, 4);
-        g.addEdge(3, 6);
+        g.addEdge(4, 3);
+        g.addEdge(5, 6);
+        g.addEdge(5, 8);
         g.addEdge(6, 7);
-        g.addEdge(6, 8);
 
         int s = 0;
         boolean[] visited = new boolean[g.size()];
@@ -72,9 +76,9 @@ public class GraphDFSPaths {
             edgeTo[i] = -1;
         }
 
-        dfsPaths(g, s, visited, edgeTo);
+        bfsPaths(g, s, visited, edgeTo);
 
-        System.out.println(buildPath(0, 8, visited, edgeTo)); // example: [0, 3, 6, 8]
-        System.out.println(buildPath(0, 5, visited, edgeTo)); // depends on traversal order
+        System.out.println(buildPath(0, 7, visited, edgeTo)); // [0, 1, 2, 5, 6, 7]
+        System.out.println(buildPath(0, 3, visited, edgeTo)); // [0, 1, 4, 3]
     }
 }

@@ -37,6 +37,8 @@ public class GraphDFSPaths {
             if (!visited[neighbor]) {
                 // TODO: record how we reached neighbor
                 // TODO: recursively dfs from neighbor
+                edgeTo[neighbor] = s;
+                dfsPaths(g, neighbor, visited, edgeTo);
             }
         }
     }
@@ -49,6 +51,12 @@ public class GraphDFSPaths {
         // TODO: walk backward from t to s using edgeTo
         // TODO: add s
         // TODO: reverse list before returning
+        if (!visited[t]) return path;
+        for(int x = t; x != s; x = edgeTo[x]){
+            path.add(x);
+        }
+        path.add(s);
+        Collections.reverse(path);
         return path;
     }
 

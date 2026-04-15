@@ -37,15 +37,21 @@ public class GraphDFSConnectivity {
 
     private static boolean dfs(Graph g, int current, int target, boolean[] visited) {
         // TODO: if current is target, return true
-
+        if (current == target) return true;
         // TODO: mark current as visited
-
+        visited[current] = true;
         // TODO: for each neighbor
         //         if not visited, recursively search
         //         if recursive call returns true, return true
+        for (int nei : g.neighbors(current)){
+            if(!visited[nei]) {
+                if (dfs(g, nei, target, visited)){
+                    return true;
+                }
+            }
+        }
 
         // TODO: if no path found, return false
-
         return false;
     }
 

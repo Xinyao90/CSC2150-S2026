@@ -47,7 +47,6 @@ public class BFSDistancePractice {
         //      mark visited
         //      distTo[neighbor] = distTo[v] + 1
         //      enqueue neighbor
-
         return distTo;
     }
 

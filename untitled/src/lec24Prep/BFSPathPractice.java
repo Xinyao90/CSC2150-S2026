@@ -34,7 +34,6 @@ public class BFSPathPractice {
 
     public static void bfsPaths(Graph g, int s, boolean[] visited, int[] edgeTo) {
         Queue<Integer> q = new LinkedList<>();
-
         // TODO:
         // 1. mark s visited
         // 2. enqueue s
@@ -43,6 +42,18 @@ public class BFSPathPractice {
         //      mark visited
         //      edgeTo[neighbor] = v
         //      enqueue neighbor
+        visited[s] = true;
+        q.offer(s);
+        while (!q.isEmpty()) {
+            int cur = q.poll();
+            for (int nei : g.neighbors(cur)) {
+                if (!visited[nei]){
+                    visited[nei] = true;
+                    edgeTo[nei] = cur;
+                    q.offer(nei);
+                }
+            }
+        }
     }
 
     public static List<Integer> buildPath(int s, int t, boolean[] visited, int[] edgeTo) {
@@ -53,7 +64,12 @@ public class BFSPathPractice {
         // trace backward from t to s using edgeTo
         // add s
         // reverse and return
-
+        if (!visited[t]) return path;
+        for (int x = t; x != s; x = edgeTo[x]){
+            path.add(x);
+        }
+        path.add(s);
+        Collections.reverse(path);
         return path;
     }
 

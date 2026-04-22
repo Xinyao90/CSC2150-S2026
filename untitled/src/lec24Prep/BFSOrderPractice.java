@@ -43,6 +43,19 @@ public class BFSOrderPractice {
         //      for each unvisited neighbor:
         //          mark visited
         //          enqueue it
+        visited[s] = true;
+        q.offer(s);
+        while (!q.isEmpty()) {
+            int cur = q.poll();
+            System.out.print( cur + " ");
+            for (int nei: g.neighbors(cur)) {
+                if (!visited[nei]) {
+                    visited[nei] = true;
+                    q.offer(nei);
+                }
+            }
+        }
+
     }
 
     public static void main(String[] args) {
